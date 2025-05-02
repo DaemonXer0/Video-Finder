@@ -76,6 +76,7 @@ while getopts "E:V:vh" arg; do
 	esac
 done
 
+#Parameters
 if [ $parameter_counter -eq 1 ]; then
 	echo_parameter $nameOF
 elif [ $parameter_counter -eq 2 ]; then
