@@ -37,10 +37,6 @@ function helpPanel(){
 #Firefox
 function firefox_videosel(){
 
-#!/bin/bash
-
-	#!/bin/bash
-
 # Spinner
 
 	spinner(){
