@@ -1,0 +1,91 @@
+#!/bin/bash
+
+#CTRL_C FUNCTION
+function ctrl_c(){
+	echo -e "\n\n[!] 🚀 Forzando Salida... 🚀 \n"
+	tput cnorm; exit 1
+}
+
+#CTRL_C
+trap ctrl_c INT
+
+#Global Variables
+Rubiuz_Video="https://www.youtube.com/watch?v=tf6cwJvNQXQ"
+
+#ECHO FUNCTION
+function echo_parameter(){
+	nameOF="$1"
+
+	echo -e "\n[-_-] $nameOF"
+}
+
+#VideoPanel
+function videoPanel(){
+	echo -e "\n[+] Videos en possession"
+	echo -e "\n\t[1] 😎 Rubiuz_Video - 'LA MAYOR ILEGALIDAD DE KARMALAND | Karmaland V #34' 🤪 "
+}
+
+#HELPPANEL
+function helpPanel(){
+	echo -e "\n[+] Uso:"
+	echo -e "\n\t[+] h) 🥳 Desplegar este panel de ayuda 🥳"
+	echo -e "\n\t[+] E) 🎙️ Repite lo que dices 🎙️"
+	echo -e "\n\t[+] v) 🎯 Videos en possession 🎯"
+	echo -e "\n\t[+] V) 🎛️ Video Player 🎛️"
+}
+
+#Firefox
+function firefox_videosel(){
+
+#!/bin/bash
+
+	#!/bin/bash
+
+# Spinner
+
+	spinner(){
+
+		local pid=$1
+		local delay=0.1
+		local spin='-\|/'
+
+		while kill -0 $pid 2>/dev/null; do
+			for i in $(seq 0 3); do
+				printf "\r[%c]🏁 Cargando... 🏁" "${spin:$i:1}"
+				sleep $delay
+			done
+		done
+		printf "\r[+] ¡Listo!      "
+
+	}
+
+	(sleep 1) &
+	spinner $!
+
+	if [ $1 -eq 1 ]; then
+		firefox "$Rubiuz_Video"
+	fi
+}
+
+#Indicadores
+declare -i parameter_counter=0
+
+#Argumentos
+while getopts "E:V:vh" arg; do
+	case $arg in
+		h) ;;
+		E) nameOF=$OPTARG; let parameter_counter+=1;;
+		v) let parameter_counter+=2;;
+		V) videoSeleccion=$OPTARG; let parameter_counter+=3;;
+	esac
+done
+
+if [ $parameter_counter -eq 1 ]; then
+	echo_parameter $nameOF
+elif [ $parameter_counter -eq 2 ]; then
+	videoPanel
+elif [ $parameter_counter -eq 3 ]; then
+	firefox_videosel "$videoSeleccion"
+else
+	helpPanel
+fi
